@@ -1,0 +1,9 @@
+# /etc/network/interfaces
+
+allow-hotplug wlan0
+auto wlan0
+ 
+ 
+iface wlan0 inet dhcp
+        wpa-ssid "ssid"
+        wpa-psk "password"
