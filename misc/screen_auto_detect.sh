@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# List and turn all available displays
+# List and turn on all available displays
 
 # get info from xrandr
 connectedOutputs=$(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
