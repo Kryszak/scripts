@@ -3,11 +3,17 @@
 # This script cleans disk space on Manjaro Linux
 
 set -ex
+echo "Cleaning up journal logs"
+journalctl --disk-usage
 sudo journalctl --vacuum-size=50M
+echo "Cleaning up pacman caches"
 sudo pacman -Scc
+sudo paccache -rvuk0
+echo "Cleaning up systemd coredumps"
 sudo rm -f /var/lib/systemd/coredump/*
-
-sudo paccache -r
-sudo paccache -ruk0
-
+echo "Cleaning up spotify cache"
 rm -rf ~/.cache/spotify/Storage/*
+echo "Cleaning up yay cache"
+yay -Sc -a
+echo "Packages not used by any other package:"
+pacman -Qdt
