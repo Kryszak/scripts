@@ -19,4 +19,5 @@ echo "Cleaning up yay cache"
 yay -Sc -a
 echo -e "${CYAN}Packages not used by any other package:${NC}"
 echo ""
-pacman -Qdt
+pacman -Qdt || true
+
