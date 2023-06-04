@@ -17,6 +17,8 @@ echo "Cleaning up spotify cache"
 rm -rf ~/.cache/spotify/Storage/*
 echo "Cleaning up paru cache"
 paru -Sc -a
+echo "Cleaning up cargo cache"
+rm -rf ~/.cargo/registry/*
 echo -e "${CYAN}Packages not used by any other package:${NC}"
 echo ""
 pacman -Qdt || true
