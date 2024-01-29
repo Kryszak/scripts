@@ -26,7 +26,7 @@ do
 		echo -e "${YELLOW}Applying stashed changes${NC}"
 		git stash apply
 	else
-		echo -e "${GREEN}No changes, pulling${NC}"
+		echo -e "${GREEN}No changes to stash, pulling${NC}"
 		git pull
 	fi
 done
