@@ -24,7 +24,7 @@ do
 		git stash
 		git pull
 		echo -e "${YELLOW}Applying stashed changes${NC}"
-		git stash apply
+		git stash pop
 	else
 		echo -e "${GREEN}No changes to stash, pulling${NC}"
 		git pull
