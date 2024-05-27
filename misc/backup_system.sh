@@ -1,5 +1,9 @@
 
 #!/bin/bash
+
+echo "Backing up user files"
+./rsync_to_pendrive.sh
+
 echo "Creating new system snapshot"
 sudo timeshift --create
 echo "Clearing oldest snapshot"
