@@ -1,5 +1,5 @@
-
-#!/bin/bash -e
+#!/bin/bash
+set -e
 
 BOLD="\033[1m"
 NC="\033[0m"
