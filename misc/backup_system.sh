@@ -18,3 +18,6 @@ if [[ $SNAPSHOT_COUNT -ge $SNAPSHOT_COUNT_LIMIT ]]; then
 else
 	echo -e "${BOLD}Less than ${SNAPSHOT_COUNT_LIMIT} snapshots present, no cleanup${NC}"
 fi
+
+echo -e "${BOLD}Present snapshots${NC}"
+sudo timeshift --list
