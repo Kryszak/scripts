@@ -13,7 +13,7 @@ sudo timeshift --create
 
 SNAPSHOT_COUNT=$(sudo timeshift --list | awk '/------------------------------------------------------------------------------/{y=1;next}y' | grep . | wc -l)
 if [[ $SNAPSHOT_COUNT -ge $DELETE_LATEST_SNAPSHOT_THRESHOLD ]]; then
-	echo -e "${BOLD}Clearing oldest snapshot${NC}"
+	echo -e "${BOLD}${SNAPSHOT_COUNT} snapshots are present, clearing oldest one${NC}"
 	sudo timeshift --delete --snapshot $(sudo timeshift --list | grep "0    >" | grep -Eo "[0-9]{4}-[0-9]{2}-[0-9]{2}_[0-9]{2}-[0-9]{2}-[0-9]{2}")
 else
 	echo -e "${BOLD}Less than ${DELETE_LATEST_SNAPSHOT_THRESHOLD} snapshots present, no cleanup${NC}"
