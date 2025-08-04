@@ -5,6 +5,8 @@ BOLD="\033[1m"
 NC="\033[0m"
 DELETE_LATEST_SNAPSHOT_THRESHOLD=3
 
+alias timeshift='env LC_ALL=C.UTF-8 timeshift'
+
 echo -e "${BOLD}Backing up user files${NC}"
 ./rsync_to_pendrive.sh
 
