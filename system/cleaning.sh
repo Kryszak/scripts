@@ -17,6 +17,8 @@ echo "Cleaning up spotify cache"
 rm -rf ~/.cache/spotify/*
 echo "Cleaning up cargo cache"
 rm -rf ~/.cargo/registry/*
+echo "Cleaning up workspace projects builds"
+find ~/workspace -name "target" -delete
 echo -e "${CYAN}Packages not used by any other package:${NC}"
 echo ""
 pacman -Qdt || true
