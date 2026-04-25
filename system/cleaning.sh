@@ -13,8 +13,8 @@ sudo paru -Sccd
 sudo paccache -rvuk0
 echo "Cleaning up systemd coredumps"
 sudo rm -f /var/lib/systemd/coredump/*
-echo "Cleaning up spotify cache"
-rm -rf ~/.cache/spotify/*
+# echo "Cleaning up spotify cache"
+# rm -rf ~/.cache/spotify/*
 echo "Cleaning up cargo cache"
 rm -rf ~/.cargo/registry/*
 echo "Cleaning up workspace projects builds"
