@@ -71,17 +71,6 @@ PENDRIVE="$1"
 PENDRIVE_LABEL="$2"
 
 # ------------------------------------------------------------
-# Check privileges
-# ------------------------------------------------------------
-
-if ! command -v sudo >/dev/null 2>&1; then
-    echo "Error: sudo is not installed." >&2
-    exit 1
-fi
-
-sudo -v
-
-# ------------------------------------------------------------
 # Check required tools
 # ------------------------------------------------------------
 
@@ -117,7 +106,6 @@ if [[ "$TYPE" != "disk" ]]; then
     exit 1
 fi
 
-
 # ------------------------------------------------------------
 # Prevent formatting the system disk
 # ------------------------------------------------------------
@@ -132,21 +120,6 @@ if [[ -n "$ROOT_SOURCE" ]]; then
         echo "Formatting has been blocked." >&2
         exit 1
     fi
-fi
-
-# ------------------------------------------------------------
-# Check if device is removable
-# ------------------------------------------------------------
-
-REMOVABLE="$(lsblk -dnro RM "$PENDRIVE")"
-
-if [[ "$REMOVABLE" != "1" && "$FORCE" != "1" ]]; then
-    echo "Error: '$PENDRIVE' is not marked as a removable device." >&2
-    echo "For safety, formatting has been blocked." >&2
-    echo >&2
-    echo "If you are certain this is the correct device, use:" >&2
-    echo "  $SCRIPT_NAME --force $PENDRIVE \"$PENDRIVE_LABEL\"" >&2
-    exit 1
 fi
 
 # ------------------------------------------------------------
@@ -228,7 +201,7 @@ echo "Creating MBR partition table..."
 sudo parted -s "$PENDRIVE" mklabel msdos
 
 echo "Creating exFAT partition..."
-sudo parted -s "$PENDRIVE" mkpart primary exfat 1MiB 100%
+sudo parted "${PENDRIVE}" --script mkpart primary exfat 0% 100%
 
 echo "Refreshing partition information..."
 sudo partprobe "$PENDRIVE" 2>/dev/null || true
